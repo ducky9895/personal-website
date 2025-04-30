@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#6366f1'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.timeline-item {
+position: relative;
+padding-left: 2rem;
+}
+.timeline-item:before {
+content: "";
+position: absolute;
+left: 0;
+top: 0.5rem;
+width: 0.75rem;
+height: 0.75rem;
+border-radius: 50%;
+background-color: #4f46e5;
+}
+.timeline-item:after {
+content: "";
+position: absolute;
+left: 0.35rem;
+top: 1.25rem;
+width: 1px;
+height: calc(100% - 1rem);
+background-color: #e5e7eb;
+}
+.timeline-item:last-child:after {
+display: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
+</head>
+<body class="bg-white min-h-screen">
+<header class="w-full">
+<!-- Dark mode toggle -->
+<div class="absolute top-6 left-6">
+<button class="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-md">
+<i class="ri-moon-line text-gray-600"></i>
+</button>
+</div>
+<!-- Navigation -->
+<nav class="flex justify-center pt-20 pb-16">
+<ul class="flex space-x-16">
+<li><a href="#about" class="text-gray-900 hover:text-primary font-medium">About</a></li>
+<li><a href="#publications" class="text-gray-900 hover:text-primary font-medium">Publications</a></li>
+<li><a href="#contact" class="text-gray-900 hover:text-primary font-medium">Contact</a></li>
+<li><a href="#outreach" class="text-gray-900 hover:text-primary font-medium">Outreach</a></li>
+</ul>
+</nav>
+<!-- Hero Section -->
+<div class="container mx-auto px-6 flex flex-col lg:flex-row items-center justify-between mb-20">
+<div class="lg:w-1/2 mb-10 lg:mb-0">
+<h1 class="text-4xl font-bold text-gray-900 mb-4">
+<span class="block">Your Name</span>
+<span class="block mt-2">PhD Candidate in Computer Science</span>
+</h1>
+<p class="text-xl text-gray-700 mb-8">Exploring the intersection of machine learning and [your research area] to solve complex problems.</p>
+<a href="#" class="inline-block border border-gray-300 px-6 py-3 text-gray-900 font-medium !rounded-button whitespace-nowrap hover:bg-gray-50 transition">Curriculum Vitae</a>
+</div>
+<div class="lg:w-1/2 flex justify-center">
+<div class="w-full max-w-md">
+<img src="https://readdy.ai/api/search-image?query=abstract%20network%20visualization%2C%20nodes%20and%20connections%2C%20data%20science%20concept%2C%20minimalist%2C%20clean%20design%2C%20light%20gray%20on%20white%20background%2C%20professional%20academic%20visualization&width=500&height=500&seq=123456&orientation=squarish" alt="Network Visualization" class="w-full object-contain">
+</div>
+</div>
+</div>
+<!-- Current Status Section -->
+<div class="container mx-auto px-6 mb-24">
+<div class="flex flex-col lg:flex-row items-start">
+<div class="lg:w-1/4 mb-6 lg:mb-0">
+<h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">CURRENTLY</h2>
+<p class="text-lg font-medium text-gray-900 mt-1">CS Graduate Student</p>
+</div>
+<div class="lg:w-2/4 lg:pr-12">
+<p class="text-gray-700 mb-4">
+I am a PhD candidate advised by <span class="font-semibold">Professor [Advisor Name]</span>.
+My research focuses on <span class="font-semibold">[research area]</span> and <span class="font-semibold">[another research area]</span> for machine learning applications.
+</p>
+<p class="text-gray-700 mb-4">
+I am broadly interested in developing methods that leverage prior knowledge and data to help algorithms better generalize to new distributions. I explore these problems in the setting of [specific application domains].
+</p>
+<p class="text-gray-700">
+I am grateful to be supported by [any fellowships or grants you have received].
+</p>
+</div>
+<div class="lg:w-1/4 flex justify-center lg:justify-end mt-6 lg:mt-0">
+<div class="w-32 h-32 rounded-full overflow-hidden border-2 border-gray-200">
+<img src="https://readdy.ai/api/search-image?query=professional%20academic%20portrait%2C%20neutral%20background%2C%20outdoors%2C%20natural%20lighting%2C%20professional%20attire%2C%20thoughtful%20expression&width=300&height=300&seq=123457&orientation=squarish" alt="Profile Photo" class="w-full h-full object-cover">
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-6">
+<!-- Handles Section -->
+<section class="mb-24">
+<h2 class="text-2xl font-bold text-gray-900 mb-1">self.Connect</h2>
+<p class="text-green-600 font-mono mb-8">"""Let's connect and collaborate."""</p>
+<div class="flex space-x-12 justify-center">
+<a href="#" class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-linkedin-fill text-2xl text-gray-700"></i>
+</div>
+<span class="text-gray-600">your-linkedin</span>
+</a>
+<a href="#" class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-github-fill text-2xl text-gray-700"></i>
+</div>
+<span class="text-gray-600">@your-github</span>
+</a>
+<a href="#" class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-twitter-x-fill text-2xl text-gray-700"></i>
+</div>
+<span class="text-gray-600">@your_twitter</span>
+</a>
+<a href="#" class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-google-fill text-2xl text-gray-700"></i>
+</div>
+<span class="text-gray-600">Google Scholar</span>
+</a>
+</div>
+</section>
+<!-- Timeline Section -->
+<section class="mb-24">
+<h2 class="text-2xl font-bold text-gray-900 mb-1">self.Journey</h2>
+<p class="text-green-600 font-mono mb-8">"""Academic and research milestones."""</p>
+<div class="space-y-6">
+<div class="timeline-item">
+<div class="flex">
+<div class="w-16 text-gray-500">2025</div>
+<div class="flex-1">Research Assistant at [University/Lab Name]</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="flex">
+<div class="w-16 text-gray-500">2024</div>
+<div class="flex-1">Started PhD in Computer Science at [University Name]</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="flex">
+<div class="w-16 text-gray-500">2023</div>
+<div class="flex-1">Research Intern at [Company/Lab Name]</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="flex">
+<div class="w-16 text-gray-500">2022</div>
+<div class="flex-1">Software Engineering Intern at [Company Name]</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="flex">
+<div class="w-16 text-gray-500">2021</div>
+<div class="flex-1">Graduated with BS in [Your Major] from [University Name]</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Research Updates Section -->
+<section class="mb-24">
+<h2 class="text-2xl font-bold text-gray-900 mb-1">self.Research</h2>
+<p class="text-green-600 font-mono mb-8">"""Latest contributions to the field."""</p>
+<div class="space-y-10">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-16 text-gray-500 mb-2 md:mb-0">2025</div>
+<div class="flex-1">
+<p class="text-gray-900 mb-2">
+Our paper on <span class="font-medium">[Research Topic]</span> has been accepted to [Conference/Journal Name]! Learn more about how we [brief description of research contribution].
+</p>
+<a href="#" class="text-primary hover:underline">Read the preprint →</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-16 text-gray-500 mb-2 md:mb-0">2024</div>
+<div class="flex-1">
+<p class="text-gray-900 mb-2">
+Excited to share our work on [Research Topic] in [Conference/Journal Name], exploring how [brief description of research].
+</p>
+<a href="#" class="text-primary hover:underline">Check out our paper →</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-16 text-gray-500 mb-2 md:mb-0">2024</div>
+<div class="flex-1">
+<p class="text-gray-900 mb-2">
+Our method for [Research Problem] has been accepted to [Conference Name]. Learn how we improved [performance metric] by [improvement percentage].
+</p>
+<a href="#" class="text-primary hover:underline">View the publication →</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-16 text-gray-500 mb-2 md:mb-0">2023</div>
+<div class="flex-1">
+<p class="text-gray-900 mb-2">
+What are the limitations of [technical approach] for solving [problem domain]? Check out our review paper on [topic] in [Journal/Conference].
+</p>
+<a href="#" class="text-primary hover:underline">Read our analysis →</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Teaching & Service Section -->
+<section class="mb-24">
+<h2 class="text-2xl font-bold text-gray-900 mb-1">self.Impact</h2>
+<p class="text-green-600 font-mono mb-8">"""Teaching, mentoring, and academic service."""</p>
+<div class="space-y-6">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-24 text-gray-500 mb-2 md:mb-0">Teaching</div>
+<div class="flex-1">
+<p class="text-gray-900 mb-4">Graduate Teaching Assistant for Advanced Machine Learning (Spring 2025)</p>
+<p class="text-gray-900 mb-4">Guest Lecturer for Introduction to Deep Learning (Fall 2024)</p>
+</div>
+</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-24 text-gray-500 mb-2 md:mb-0">Service</div>
+<div class="flex-1">
+<p class="text-gray-900 mb-4">Reviewer for NeurIPS 2025, ICML 2024</p>
+<p class="text-gray-900 mb-4">Student Mentor for Women in ML Workshop 2024</p>
+</div>
+</div>
+</div>
+</section>
+<a href="#" class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-linkedin-fill text-2xl text-gray-700"></i>
+</div>
+<span class="text-gray-600">your-linkedin</span>
+</a>
+<a href="#" class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-github-fill text-2xl text-gray-700"></i>
+</div>
+<span class="text-gray-600">@your-github</span>
+</a>
+<a href="#" class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-twitter-x-fill text-2xl text-gray-700"></i>
+</div>
+<span class="text-gray-600">@your_twitter</span>
+</a>
+<a href="#" class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">
+<i class="ri-google-fill text-2xl text-gray-700"></i>
+</div>
+<span class="text-gray-600">Google Scholar</span>
+</a>
+</div>
+</section>
+</main>
+<footer class="bg-gray-50 py-12">
+<div class="container mx-auto px-6 text-center text-gray-500">
+<p>© 2025 Your Name. All rights reserved.</p>
+<p class="mt-2">Last updated: April 28, 2025</p>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const darkModeToggle = document.querySelector('.ri-moon-line').parentElement;
+darkModeToggle.addEventListener('click', function() {
+document.body.classList.toggle('dark');
+const icon = darkModeToggle.querySelector('i');
+if (icon.classList.contains('ri-moon-line')) {
+icon.classList.remove('ri-moon-line');
+icon.classList.add('ri-sun-line');
+} else {
+icon.classList.remove('ri-sun-line');
+icon.classList.add('ri-moon-line');
+}
+});
+});
+</script>
+</body>
+</html>
