@@ -12,6 +12,30 @@ async function loadPartial(elementId, filePath) {
     }
 }
 
+// Function to update the footer date information
+function updateFooterDates() {
+    // Update copyright year
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        const currentYear = new Date().getFullYear();
+        currentYearElement.textContent = currentYear;
+    }
+    
+    // Update last modified date
+    const lastUpdatedElement = document.getElementById('last-updated');
+    if (lastUpdatedElement) {
+        // Option 1: Use document last modified date
+        const lastModified = new Date(document.lastModified);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        lastUpdatedElement.textContent = lastModified.toLocaleDateString('en-US', options);
+        
+        // Option 2: Use current date (uncomment if you prefer this)
+        // const today = new Date();
+        // const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        // lastUpdatedElement.textContent = today.toLocaleDateString('en-US', options);
+    }
+}
+
 // Initialize dark mode
 function initializeDarkMode() {
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -125,7 +149,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Initialize after partials are loaded
         initializeDarkMode();
         initializeSmoothScroll();
-        initializeMobileMenu(); // Add mobile menu functionality
+        initializeMobileMenu();
+        updateFooterDates();
         
         // Hide loading overlay
         const loadingOverlay = document.getElementById('loading-overlay');
