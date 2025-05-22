@@ -1,13 +1,11 @@
 // Function to load HTML partials
 async function loadPartial(elementId, filePath) {
     try {
-        // Remove leading slash if present
-        const cleanPath = filePath.startsWith('/') ? filePath.slice(1) : filePath;
-        console.log(`Loading partial: ${cleanPath} into element: ${elementId}`);
+        console.log(`Loading partial: ${filePath} into element: ${elementId}`);
         
-        const response = await fetch(cleanPath);
+        const response = await fetch(filePath);
         if (!response.ok) {
-            throw new Error(`Error loading ${cleanPath}: ${response.status}`);
+            throw new Error(`Error loading ${filePath}: ${response.status}`);
         }
         const html = await response.text();
         const element = document.getElementById(elementId);
@@ -19,33 +17,6 @@ async function loadPartial(elementId, filePath) {
         }
     } catch (error) {
         console.error(`Failed to load partial: ${error}`);
-    }
-}
-
-// Function to load head content
-async function loadHeadContent() {
-    try {
-        console.log('Loading head content');
-        const response = await fetch('layouts/partials/head.html');
-        if (!response.ok) {
-            throw new Error(`Error loading head content: ${response.status}`);
-        }
-        const html = await response.text();
-        
-        // Create a temporary div to parse the HTML
-        const temp = document.createElement('div');
-        temp.innerHTML = html;
-        
-        // Get all elements from the head content
-        const elements = temp.children;
-        
-        // Add each element to the document head
-        while (elements.length > 0) {
-            document.head.appendChild(elements[0]);
-        }
-        console.log('Head content loaded successfully');
-    } catch (error) {
-        console.error('Error loading head content:', error);
     }
 }
 
@@ -61,15 +32,9 @@ function updateFooterDates() {
     // Update last modified date
     const lastUpdatedElement = document.getElementById('last-updated');
     if (lastUpdatedElement) {
-        // Option 1: Use document last modified date
         const lastModified = new Date(document.lastModified);
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         lastUpdatedElement.textContent = lastModified.toLocaleDateString('en-US', options);
-        
-        // Option 2: Use current date (uncomment if you prefer this)
-        // const today = new Date();
-        // const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        // lastUpdatedElement.textContent = today.toLocaleDateString('en-US', options);
     }
 }
 
@@ -181,49 +146,49 @@ function initializeMobileMenu() {
 document.addEventListener('DOMContentLoaded', async function() {
     console.log('DOM Content Loaded');
     
-    // Load head content first if we're not on the index page
-    if (!window.location.pathname.endsWith('index.html')) {
-        console.log('Loading head content for non-index page');
-        await loadHeadContent();
-    }
-
-    // Load header for all pages
-    const headerId = window.location.pathname.endsWith('index.html') ? 'header-placeholder' : 'header-container';
-    console.log(`Loading header into element: ${headerId}`);
-    await loadPartial(headerId, 'layouts/partials/header.html');
-    
-    // Load other partials for index page
-    if (window.location.pathname.endsWith('index.html')) {
-        console.log('Loading index page partials');
     try {
-        await Promise.all([
-            loadPartial('hero-placeholder', 'layouts/partials/hero.html'),
-            loadPartial('handles-placeholder', 'layouts/partials/handles.html'),
-            loadPartial('timeline-placeholder', 'layouts/partials/timeline.html'),
-            loadPartial('changelog-placeholder', 'layouts/partials/changelog.html'),
-            loadPartial('impact-placeholder', 'layouts/partials/impact.html'),
-            loadPartial('footer-placeholder', 'layouts/partials/footer.html')
-        ]);
-        } catch (error) {
-            console.error('Error loading index page partials:', error);
+        // Check if we're on the index page
+        const isIndexPage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+        
+        if (isIndexPage) {
+            // Load all partials for the index page
+            await Promise.all([
+                loadPartial('header-placeholder', '_includes/header.html'),
+                loadPartial('hero-placeholder', '_includes/hero.html'),
+                loadPartial('handles-placeholder', '_includes/handles.html'),
+                loadPartial('timeline-placeholder', '_includes/timeline.html'),
+                loadPartial('changelog-placeholder', '_includes/changelog.html'),
+                loadPartial('impact-placeholder', '_includes/impact.html'),
+                loadPartial('footer-placeholder', '_includes/footer.html')
+            ]);
+        } else {
+            // For other pages, only load the header
+            await loadPartial('header-placeholder', '_includes/header.html');
         }
-    }
         
         // Initialize after partials are loaded
-        setTimeout(() => {
         console.log('Initializing components');
-            initializeDarkMode();
-            initializeSmoothScroll();
-            initializeMobileMenu();
+        initializeDarkMode();
+        initializeSmoothScroll();
+        initializeMobileMenu();
+        if (isIndexPage) {
             updateFooterDates();
-        }, 100);
+        }
         
         // Hide loading overlay
         const loadingOverlay = document.getElementById('loading-overlay');
         if (loadingOverlay) {
-            loadingOverlay.style.opacity = 0;
+            loadingOverlay.style.opacity = '0';
             setTimeout(() => {
                 loadingOverlay.style.display = 'none';
             }, 300);
+        }
+    } catch (error) {
+        console.error('Error loading page content:', error);
+        // Hide loading overlay even if there's an error
+        const loadingOverlay = document.getElementById('loading-overlay');
+        if (loadingOverlay) {
+            loadingOverlay.style.display = 'none';
+        }
     }
 });

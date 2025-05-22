@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research - Minxuan Duan</title>
+    <link rel="icon" href="assets/icons/duck_background_round.ico" type="image/x-icon">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
@@ -15,6 +16,18 @@
                     colors: {
                         primary: '#306998',
                         secondary: '#FFD43B'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
                     }
                 }
             }
@@ -24,20 +37,59 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Remix Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/styles.css">
+    
+    <!-- Loading overlay style -->
+    <style>
+      #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.3s;
+      }
+      .dark #loading-overlay {
+        background-color: #1a202c;
+      }
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #e5e7eb;
+        border-top: 5px solid #306998;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
 </head>
-<body class="bg-white dark:bg-gray-900">
+<body class="bg-white min-h-screen">
+    <!-- Loading overlay -->
+    <div id="loading-overlay">
+      <div class="loading-spinner"></div>
+    </div>
+
     <!-- Max-width wrapper -->
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <header class="w-full">
-            <!-- Header will be imported here -->
-            <div id="header-container"></div>
+            <div id="header-placeholder"></div>
         </header>
 
-        <!-- Main Content -->
         <main class="container mx-auto px-4 py-8">
             <h1 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">Research</h1>
             
@@ -50,7 +102,7 @@
         </main>
     </div>
 
-    <!-- JavaScript -->
+    <!-- Scripts -->
     <script src="scripts/app.js"></script>
 </body>
 </html>
