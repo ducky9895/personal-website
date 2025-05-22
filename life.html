@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobby - Minxuan Duan</title>
+    <link rel="icon" href="assets/icons/duck_background_round.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#306998',
+                        secondary: '#FFD43B'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        'mansalva': ['Mansalva', 'cursive'],
+                        'montserrat': ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body class="bg-white dark:bg-gray-900">
+    <!-- Dark mode toggle and Duck icon - positioned outside max-width -->
+    <div class="fixed top-4 sm:top-6 left-4 sm:left-6 z-10 flex items-center space-x-3">
+        <button id="darkModeToggle" class="w-10 h-10 flex items-center justify-center border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors">
+            <i class="ri-moon-line text-gray-600 dark:text-gray-400 text-lg"></i>
+        </button>
+        <a href="index.html" class="w-10 h-10 flex items-center justify-center border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors p-0.01">
+            <img src="assets/icons/duck.ico" alt="Duck Icon" class="w-full h-full object-contain block dark:hidden">
+            <img src="assets/icons/duck_white.ico" alt="Duck Icon" class="w-full h-full object-contain hidden dark:block">
+        </a>
+    </div>
+
+    <!-- Hero Section - Moved outside max-width wrapper -->
+    <section class="relative h-[20vh] w-full bg-cover bg-center bg-no-repeat" style="background-image: url('assets/artwork.jpg');">
+        <!-- Dark overlay to ensure text readability -->
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+            <h1 class="font-mansalva text-4xl md:text-5xl mb-2">Ducky's Lobby</h1>
+            <p class="font-montserrat text-base md:text-lg font-light tracking-wider">A collection of moments</p>
+        </div>
+    </section>
+
+    <!-- Max-width wrapper -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8">
+            <!-- Section 1: Mexico -->
+            <section class="mb-20">
+                <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-8">Mexico</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Portrait Photos Carousel -->
+                    <div class="relative">
+                        <div class="carousel-container overflow-hidden">
+                            <div class="carousel-track-portrait flex transition-transform duration-500">
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/mexico/portrait/1.jpg" alt="Mexico Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[3/4] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/mexico/portrait/2.JPG" alt="Mexico Portrait 2" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/mexico/portrait/3.JPG" alt="Mexico Portrait 3" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/mexico/portrait/4.JPG" alt="Mexico Portrait 4" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/mexico/portrait/5.JPG" alt="Mexico Portrait 5" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/mexico/portrait/6.JPG" alt="Mexico Portrait 6" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-prev-portrait absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-left-s-line text-lg"></i>
+                        </button>
+                        <button class="carousel-next-portrait absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-right-s-line text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Landscape Photos Carousel - Two rows -->
+                    <div class="flex flex-col gap-8">
+                        <!-- First Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-1 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/mexico/landscape/1.JPG" alt="Mexico Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[4/3] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/mexico/landscape/3.jpg" alt="Mexico Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/mexico/landscape/4.jpg" alt="Mexico Landscape 3" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-1 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-1 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- Second Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-2 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[4/3] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/mexico/landscape/2.jpg" alt="Mexico Landscape 4" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/mexico/landscape/5.jpg" alt="Mexico Landscape 5" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-2 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-2 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Colorado -->
+            <section class="mb-20">
+                <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-8">Colorado</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Portrait Photos Carousel -->
+                    <div class="relative">
+                        <div class="carousel-container overflow-hidden">
+                            <div class="carousel-track-portrait-colorado flex transition-transform duration-500">
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Colorado/portrait/1.jpg" alt="Colorado Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Colorado/portrait/2.jpg" alt="Colorado Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Colorado/portrait/3.jpg" alt="Colorado Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-prev-portrait-colorado absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-left-s-line text-lg"></i>
+                        </button>
+                        <button class="carousel-next-portrait-colorado absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-right-s-line text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Landscape Photos Carousel - Two rows -->
+                    <div class="flex flex-col gap-8">
+                        <!-- First Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-colorado-1 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Colorado/landscape/1.jpg" alt="Colorado Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <!-- Add more landscape photos as needed -->
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-colorado-1 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-colorado-1 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- Second Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-colorado-2 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[4/3] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Colorado/landscape/2.jpg" alt="Colorado Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[4/3] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Colorado/landscape/3.jpg" alt="Colorado Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[4/3] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Colorado/landscape/4.jpg" alt="Colorado Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-colorado-2 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-colorado-2 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Seattle -->
+            <section class="mb-20">
+                <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-8">Seattle</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Portrait Photos Carousel -->
+                    <div class="relative">
+                        <div class="carousel-container overflow-hidden">
+                            <div class="carousel-track-portrait-seattle flex transition-transform duration-500">
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Seattle/portrait/1.jpg" alt="Seattle Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Seattle/portrait/2.jpg" alt="Seattle Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Seattle/portrait/3.jpg" alt="Seattle Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Seattle/portrait/4.jpg" alt="Seattle Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <!-- Add more portrait photos as needed -->
+                            </div>
+                        </div>
+                        <button class="carousel-prev-portrait-seattle absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-left-s-line text-lg"></i>
+                        </button>
+                        <button class="carousel-next-portrait-seattle absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-right-s-line text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Landscape Photos Carousel - Two rows -->
+                    <div class="flex flex-col gap-8">
+                        <!-- First Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-seattle-1 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Seattle/landscape/1.jpg" alt="Seattle Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Seattle/landscape/2.jpg" alt="Seattle Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Seattle/landscape/3.jpg" alt="Seattle Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <!-- Add more landscape photos as needed -->
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-seattle-1 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-seattle-1 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- Second Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-seattle-2 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[4/3] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Seattle/landscape/4.jpg" alt="Seattle Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Seattle/landscape/5.jpg" alt="Seattle Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Seattle/landscape/6.jpg" alt="Seattle Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Seattle/landscape/7.jpg" alt="Seattle Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <!-- Add more landscape photos as needed -->
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-seattle-2 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-seattle-2 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Great Smoky Mountains -->
+            <section class="mb-20">
+                <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-8">Great Smoky Mountains</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Portrait Photos Carousel -->
+                    <div class="relative">
+                        <div class="carousel-container overflow-hidden">
+                            <div class="carousel-track-portrait-gsm flex transition-transform duration-500">
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Great_Smoky_Mountains/portrait/1.jpg" alt="GSM Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <!-- Add more portrait photos as needed -->
+                            </div>
+                        </div>
+                        <button class="carousel-prev-portrait-gsm absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-left-s-line text-lg"></i>
+                        </button>
+                        <button class="carousel-next-portrait-gsm absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-right-s-line text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Landscape Photos Carousel - Two rows -->
+                    <div class="flex flex-col gap-8">
+                        <!-- First Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-gsm-1 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Great_Smoky_Mountains/landscape/1.jpg" alt="GSM Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Great_Smoky_Mountains/landscape/2.jpg" alt="GSM Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Great_Smoky_Mountains/landscape/3.jpg" alt="GSM Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+
+                                    <!-- Add more landscape photos as needed -->
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-gsm-1 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-gsm-1 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- Second Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-gsm-2 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[4/3] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Great_Smoky_Mountains/landscape/4.jpg" alt="GSM Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Great_Smoky_Mountains/landscape/5.jpg" alt="GSM Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <!-- Add more landscape photos as needed -->
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-gsm-2 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-gsm-2 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Upper Peninsula of Michigan -->
+            <section class="mb-20">
+                <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-8">Upper Peninsula of Michigan</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Portrait Photos Carousel -->
+                    <div class="relative">
+                        <div class="carousel-container overflow-hidden">
+                            <div class="carousel-track-portrait-up flex transition-transform duration-500">
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Upper_Peninsula_of_Michigan/portrait/1.jpg" alt="UP Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Upper_Peninsula_of_Michigan/portrait/2.jpg" alt="UP Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <!-- Add more portrait photos as needed -->
+                            </div>
+                        </div>
+                        <button class="carousel-prev-portrait-up absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-left-s-line text-lg"></i>
+                        </button>
+                        <button class="carousel-next-portrait-up absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-right-s-line text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Landscape Photos Carousel - Two rows -->
+                    <div class="flex flex-col gap-8">
+                        <!-- First Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-up-1 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Upper_Peninsula_of_Michigan/landscape/1.jpg" alt="UP Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <!-- Add more landscape photos as needed -->
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-up-1 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-up-1 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- Second Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-up-2 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[4/3] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Upper_Peninsula_of_Michigan/landscape/2.jpg" alt="UP Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Upper_Peninsula_of_Michigan/landscape/3.jpg" alt="UP Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <!-- Add more landscape photos as needed -->
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-up-2 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-up-2 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Europe -->
+            <section class="mb-20">
+                <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-8">Europe</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Portrait Photos Carousel -->
+                    <div class="relative">
+                        <div class="carousel-container overflow-hidden">
+                            <div class="carousel-track-portrait-europe flex transition-transform duration-500">
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Europe/portrait/1.jpg" alt="Europe Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Europe/portrait/2.jpg" alt="Europe Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Europe/portrait/3.jpg" alt="Europe Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="carousel-slide min-w-full">
+                                    <div class="aspect-[2/3] w-full max-w-2xl mx-auto">
+                                        <img src="assets/images/life/Europe/portrait/4.jpg" alt="Europe Portrait 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <!-- Add more portrait photos as needed -->
+                            </div>
+                        </div>
+                        <button class="carousel-prev-portrait-europe absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-left-s-line text-lg"></i>
+                        </button>
+                        <button class="carousel-next-portrait-europe absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                            <i class="ri-arrow-right-s-line text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Landscape Photos Carousel - Two rows -->
+                    <div class="flex flex-col gap-8">
+                        <!-- First Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-europe-1 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Europe/landscape/1.jpg" alt="Europe Landscape 1" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Europe/landscape/2.jpg" alt="Europe Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <!-- Add more landscape photos as needed -->
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-europe-1 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-europe-1 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- Second Landscape Row -->
+                        <div class="relative">
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track-landscape-europe-2 flex transition-transform duration-500">
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[4/3] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Europe/landscape/3.jpg" alt="Europe Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide min-w-full">
+                                        <div class="aspect-[3/2] w-full max-w-3xl mx-auto">
+                                            <img src="assets/images/life/Europe/landscape/4.jpg" alt="Europe Landscape 2" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <!-- Add more landscape photos as needed -->
+                                </div>
+                            </div>
+                            <button class="carousel-prev-landscape-europe-2 absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-left-s-line text-lg"></i>
+                            </button>
+                            <button class="carousel-next-landscape-europe-2 absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-gray-800/50 p-1.5 hover:bg-white/70 dark:hover:bg-gray-800/70 transition-colors">
+                                <i class="ri-arrow-right-s-line text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quote -->
+            <blockquote class="mt-12 text-xl italic text-gray-600 dark:text-gray-300 text-center">
+                "Wherever there is light, one can photograph."
+            </blockquote>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            function initializeCarousel(track, slides, prevButton, nextButton) {
+                let currentIndex = 0;
+                const slideCount = slides.length;
+
+                // Clone first and last slides for infinite loop
+                const firstSlide = slides[0].cloneNode(true);
+                const lastSlide = slides[slideCount - 1].cloneNode(true);
+                track.appendChild(firstSlide);
+                track.insertBefore(lastSlide, slides[0]);
+
+                // Set initial position
+                currentIndex = 1;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                track.style.transition = 'transform 0.5s ease-in-out';
+
+                function updateSlidePosition(animate = true) {
+                    if (!animate) {
+                        track.style.transition = 'none';
+                    } else {
+                        track.style.transition = 'transform 0.5s ease-in-out';
+                    }
+                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
+
+                function handleTransitionEnd() {
+                    if (currentIndex === 0) {
+                        currentIndex = slideCount;
+                        updateSlidePosition(false);
+                    } else if (currentIndex === slideCount + 1) {
+                        currentIndex = 1;
+                        updateSlidePosition(false);
+                    }
+                }
+
+                prevButton.addEventListener('click', () => {
+                    currentIndex--;
+                    updateSlidePosition();
+                });
+
+                nextButton.addEventListener('click', () => {
+                    currentIndex++;
+                    updateSlidePosition();
+                });
+
+                track.addEventListener('transitionend', handleTransitionEnd);
+            }
+
+            // Initialize all carousels
+            initializeCarousel(
+                document.querySelector('.carousel-track-portrait'),
+                document.querySelectorAll('.carousel-track-portrait .carousel-slide'),
+                document.querySelector('.carousel-prev-portrait'),
+                document.querySelector('.carousel-next-portrait')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-1'),
+                document.querySelectorAll('.carousel-track-landscape-1 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-1'),
+                document.querySelector('.carousel-next-landscape-1')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-2'),
+                document.querySelectorAll('.carousel-track-landscape-2 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-2'),
+                document.querySelector('.carousel-next-landscape-2')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-portrait-gsm'),
+                document.querySelectorAll('.carousel-track-portrait-gsm .carousel-slide'),
+                document.querySelector('.carousel-prev-portrait-gsm'),
+                document.querySelector('.carousel-next-portrait-gsm')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-gsm-1'),
+                document.querySelectorAll('.carousel-track-landscape-gsm-1 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-gsm-1'),
+                document.querySelector('.carousel-next-landscape-gsm-1')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-gsm-2'),
+                document.querySelectorAll('.carousel-track-landscape-gsm-2 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-gsm-2'),
+                document.querySelector('.carousel-next-landscape-gsm-2')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-portrait-europe'),
+                document.querySelectorAll('.carousel-track-portrait-europe .carousel-slide'),
+                document.querySelector('.carousel-prev-portrait-europe'),
+                document.querySelector('.carousel-next-portrait-europe')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-europe-1'),
+                document.querySelectorAll('.carousel-track-landscape-europe-1 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-europe-1'),
+                document.querySelector('.carousel-next-landscape-europe-1')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-europe-2'),
+                document.querySelectorAll('.carousel-track-landscape-europe-2 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-europe-2'),
+                document.querySelector('.carousel-next-landscape-europe-2')
+            );
+
+            // Seattle carousels
+            initializeCarousel(
+                document.querySelector('.carousel-track-portrait-seattle'),
+                document.querySelectorAll('.carousel-track-portrait-seattle .carousel-slide'),
+                document.querySelector('.carousel-prev-portrait-seattle'),
+                document.querySelector('.carousel-next-portrait-seattle')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-seattle-1'),
+                document.querySelectorAll('.carousel-track-landscape-seattle-1 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-seattle-1'),
+                document.querySelector('.carousel-next-landscape-seattle-1')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-seattle-2'),
+                document.querySelectorAll('.carousel-track-landscape-seattle-2 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-seattle-2'),
+                document.querySelector('.carousel-next-landscape-seattle-2')
+            );
+
+            // Upper Peninsula carousels
+            initializeCarousel(
+                document.querySelector('.carousel-track-portrait-up'),
+                document.querySelectorAll('.carousel-track-portrait-up .carousel-slide'),
+                document.querySelector('.carousel-prev-portrait-up'),
+                document.querySelector('.carousel-next-portrait-up')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-up-1'),
+                document.querySelectorAll('.carousel-track-landscape-up-1 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-up-1'),
+                document.querySelector('.carousel-next-landscape-up-1')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-up-2'),
+                document.querySelectorAll('.carousel-track-landscape-up-2 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-up-2'),
+                document.querySelector('.carousel-next-landscape-up-2')
+            );
+
+            // Colorado carousels
+            initializeCarousel(
+                document.querySelector('.carousel-track-portrait-colorado'),
+                document.querySelectorAll('.carousel-track-portrait-colorado .carousel-slide'),
+                document.querySelector('.carousel-prev-portrait-colorado'),
+                document.querySelector('.carousel-next-portrait-colorado')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-colorado-1'),
+                document.querySelectorAll('.carousel-track-landscape-colorado-1 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-colorado-1'),
+                document.querySelector('.carousel-next-landscape-colorado-1')
+            );
+
+            initializeCarousel(
+                document.querySelector('.carousel-track-landscape-colorado-2'),
+                document.querySelectorAll('.carousel-track-landscape-colorado-2 .carousel-slide'),
+                document.querySelector('.carousel-prev-landscape-colorado-2'),
+                document.querySelector('.carousel-next-landscape-colorado-2')
+            );
+        });
+    </script>
+</body>
+</html> 

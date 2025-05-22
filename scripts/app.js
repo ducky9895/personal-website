@@ -1,14 +1,51 @@
 // Function to load HTML partials
 async function loadPartial(elementId, filePath) {
     try {
-        const response = await fetch(filePath);
+        // Remove leading slash if present
+        const cleanPath = filePath.startsWith('/') ? filePath.slice(1) : filePath;
+        console.log(`Loading partial: ${cleanPath} into element: ${elementId}`);
+        
+        const response = await fetch(cleanPath);
         if (!response.ok) {
-            throw new Error(`Error loading ${filePath}: ${response.status}`);
+            throw new Error(`Error loading ${cleanPath}: ${response.status}`);
         }
         const html = await response.text();
-        document.getElementById(elementId).innerHTML = html;
+        const element = document.getElementById(elementId);
+        if (element) {
+            console.log(`Found element ${elementId}, setting content`);
+            element.innerHTML = html;
+        } else {
+            console.warn(`Element with id "${elementId}" not found`);
+        }
     } catch (error) {
         console.error(`Failed to load partial: ${error}`);
+    }
+}
+
+// Function to load head content
+async function loadHeadContent() {
+    try {
+        console.log('Loading head content');
+        const response = await fetch('layouts/partials/head.html');
+        if (!response.ok) {
+            throw new Error(`Error loading head content: ${response.status}`);
+        }
+        const html = await response.text();
+        
+        // Create a temporary div to parse the HTML
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+        
+        // Get all elements from the head content
+        const elements = temp.children;
+        
+        // Add each element to the document head
+        while (elements.length > 0) {
+            document.head.appendChild(elements[0]);
+        }
+        console.log('Head content loaded successfully');
+    } catch (error) {
+        console.error('Error loading head content:', error);
     }
 }
 
@@ -39,19 +76,26 @@ function updateFooterDates() {
 // Initialize dark mode
 function initializeDarkMode() {
     const darkModeToggle = document.getElementById('darkModeToggle');
-    if (!darkModeToggle) return;
+    if (!darkModeToggle) {
+        console.log('Dark mode toggle button not found');
+        return;
+    }
     
     const htmlElement = document.documentElement;
+    console.log('Initial dark mode state:', htmlElement.classList.contains('dark'));
     
     // Check for saved theme preference or respect OS theme settings
     if (localStorage.getItem('darkMode') === 'true' || 
         (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && 
          localStorage.getItem('darkMode') === null)) {
+        console.log('Enabling dark mode on init');
         enableDarkMode();
     }
     
     // Toggle dark mode
     darkModeToggle.addEventListener('click', function() {
+        console.log('Dark mode toggle clicked');
+        console.log('Current dark mode state:', htmlElement.classList.contains('dark'));
         if (htmlElement.classList.contains('dark')) {
             disableDarkMode();
         } else {
@@ -60,6 +104,7 @@ function initializeDarkMode() {
     });
     
     function enableDarkMode() {
+        console.log('Enabling dark mode');
         htmlElement.classList.add('dark');
         document.body.classList.add('bg-gray-900');
         document.body.classList.remove('bg-white');
@@ -73,6 +118,7 @@ function initializeDarkMode() {
     }
     
     function disableDarkMode() {
+        console.log('Disabling dark mode');
         htmlElement.classList.remove('dark');
         document.body.classList.remove('bg-gray-900');
         document.body.classList.add('bg-white');
@@ -133,11 +179,24 @@ function initializeMobileMenu() {
 
 // Load all partials when DOM is ready
 document.addEventListener('DOMContentLoaded', async function() {
-    // Load partials
-    // Using Promise.all to load all partials in parallel
+    console.log('DOM Content Loaded');
+    
+    // Load head content first if we're not on the index page
+    if (!window.location.pathname.endsWith('index.html')) {
+        console.log('Loading head content for non-index page');
+        await loadHeadContent();
+    }
+
+    // Load header for all pages
+    const headerId = window.location.pathname.endsWith('index.html') ? 'header-placeholder' : 'header-container';
+    console.log(`Loading header into element: ${headerId}`);
+    await loadPartial(headerId, 'layouts/partials/header.html');
+    
+    // Load other partials for index page
+    if (window.location.pathname.endsWith('index.html')) {
+        console.log('Loading index page partials');
     try {
         await Promise.all([
-            loadPartial('header-placeholder', 'layouts/partials/header.html'),
             loadPartial('hero-placeholder', 'layouts/partials/hero.html'),
             loadPartial('handles-placeholder', 'layouts/partials/handles.html'),
             loadPartial('timeline-placeholder', 'layouts/partials/timeline.html'),
@@ -145,12 +204,19 @@ document.addEventListener('DOMContentLoaded', async function() {
             loadPartial('impact-placeholder', 'layouts/partials/impact.html'),
             loadPartial('footer-placeholder', 'layouts/partials/footer.html')
         ]);
+        } catch (error) {
+            console.error('Error loading index page partials:', error);
+        }
+    }
         
         // Initialize after partials are loaded
-        initializeDarkMode();
-        initializeSmoothScroll();
-        initializeMobileMenu();
-        updateFooterDates();
+        setTimeout(() => {
+        console.log('Initializing components');
+            initializeDarkMode();
+            initializeSmoothScroll();
+            initializeMobileMenu();
+            updateFooterDates();
+        }, 100);
         
         // Hide loading overlay
         const loadingOverlay = document.getElementById('loading-overlay');
@@ -159,13 +225,5 @@ document.addEventListener('DOMContentLoaded', async function() {
             setTimeout(() => {
                 loadingOverlay.style.display = 'none';
             }, 300);
-        }
-    } catch (error) {
-        console.error('Error loading partials:', error);
-        // Even if there's an error, remove the loading overlay
-        const loadingOverlay = document.getElementById('loading-overlay');
-        if (loadingOverlay) {
-            loadingOverlay.style.display = 'none';
-        }
     }
 });
